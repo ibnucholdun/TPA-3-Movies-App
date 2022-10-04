@@ -7,3 +7,14 @@
   font-family: 'Poppins', sans-serif;
 }
 
+/* HEADER */
+header {
+    background-color: #7FBCD2;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+
+header div h1{
+    color: #E1FFEE;
+}
+
