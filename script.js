@@ -22,3 +22,14 @@ const templateCardMovie = (movie) => {
     </div>
     `;
 }
+
+const getMovies = async () => {
+    const response = await fetch(`${BASE_URL}/${ENDPOINT_POPULER}?api_key=${API_KEY}`);
+    const data = await response.json();
+    const movies = data.results;
+    const html = movies.map(movie => templateCardMovie(movie)).join('');
+    listMovies.innerHTML = html;
+}
+
+
+getMovies();

@@ -18,3 +18,20 @@ header {
 header div h1{
     color: #E1FFEE;
 }
+
+/* CARD MOVIE */
+.card .card-img-top{
+  height: 300px;
+}
+
+.card .card-rating {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #fff;
+  font-size: large;
+  background-color: #000;
+  padding: 0.4em 1.3em;
+  z-index: 1;
+  border-radius: 0 0.5em;
+}
