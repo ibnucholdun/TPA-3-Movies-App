@@ -31,5 +31,22 @@ const getMovies = async () => {
     listMovies.innerHTML = html;
 }
 
+const searchMovies = async (keyword) => {
+    const response = await fetch(`${BASE_URL}/${ENDPOINT_SEARCH}?api_key=${API_KEY}&query=${keyword}`);
+    const data = await response.json();
+    const movies = data.results;
+    const html = movies.map(movie => templateCardMovie(movie)).join('');
+    if (movies.length === 0) {
+        listMovies.innerHTML = `<h2 class="text-center">Film "${keyword}" Tidak Ditemukan</h2>`;
+    } else {
+        listMovies.innerHTML = html;
+    }
+}
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    searchMovies(search.value);
+});
+
 
 getMovies();
