@@ -35,3 +35,15 @@ header div h1{
   z-index: 1;
   border-radius: 0 0.5em;
 }
+
+/* FOOTER */
+footer{
+  background-color: #7FBCD2;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+footer p{
+  color: #E1FFEE;
+}
