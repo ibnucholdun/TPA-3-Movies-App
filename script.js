@@ -46,6 +46,7 @@ const searchMovies = async (keyword) => {
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     searchMovies(search.value);
+    search.value = '';
 });
 
 
