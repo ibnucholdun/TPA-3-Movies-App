@@ -1,6 +1,6 @@
 # Technical Project Assignment (TPA) #3 - Movie App with TMDB API
 
-### FEATURE
+### Feature
 
 1. Aplikasi website menampilkan list Movie menggunakan data external API [TMDB API](https://developers.themoviedb.org/3/getting-started/introduction)
 2. Menampilkan list movie (judul, tanggal rilis, dan rating) dengan kategori terpopuler menggunakan endpoint berikut `movie/popular?api_key=your_api_key&page=1`.
