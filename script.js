@@ -24,22 +24,26 @@ const templateCardMovie = (movie) => {
 }
 
 const getMovies = async () => {
-    const response = await fetch(`${BASE_URL}/${ENDPOINT_POPULER}?api_key=${API_KEY}`);
-    const data = await response.json();
-    const movies = data.results;
-    const html = movies.map(movie => templateCardMovie(movie)).join('');
-    listMovies.innerHTML = html;
+    try {
+        const response = await fetch(`${BASE_URL}/${ENDPOINT_POPULER}?api_key=${API_KEY}&page=1`);
+        const data = await response.json();
+        const movies = data.results;
+        const html = movies.map(movie => templateCardMovie(movie)).join('');
+        listMovies.innerHTML = html;
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 const searchMovies = async (keyword) => {
-    const response = await fetch(`${BASE_URL}/${ENDPOINT_SEARCH}?api_key=${API_KEY}&query=${keyword}`);
-    const data = await response.json();
-    const movies = data.results;
-    const html = movies.map(movie => templateCardMovie(movie)).join('');
-    if (movies.length === 0) {
-        listMovies.innerHTML = `<h2 class="text-center">Film "${keyword}" Tidak Ditemukan</h2>`;
-    } else {
+    try {
+        const response = await fetch(`${BASE_URL}/${ENDPOINT_SEARCH}?api_key=${API_KEY}&query=${keyword}&page=1`);
+        const data = await response.json();
+        const movies = data.results;
+        const html = movies.map(movie => templateCardMovie(movie)).join('');
         listMovies.innerHTML = html;
+    } catch (error) {
+        console.log(error);
     }
 }
 
