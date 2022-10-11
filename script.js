@@ -4,7 +4,6 @@ const ENDPOINT_POPULER = 'movie/popular'
 const ENDPOINT_SEARCH = 'search/movie'
 const IMG_URL = 'https://image.tmdb.org/t/p/w500/';
 
-const form = document.querySelector('form');
 const search = document.querySelector('.input-search');
 const listMovies = document.querySelector('.list-movies');
 
@@ -39,17 +38,21 @@ const searchMovies = async (keyword) => {
     try {
         const response = await fetch(`${BASE_URL}/${ENDPOINT_SEARCH}?api_key=${API_KEY}&query=${keyword}&page=1`);
         const data = await response.json();
-        const movies = data.results;
-        const html = movies.map(movie => templateCardMovie(movie)).join('');
-        listMovies.innerHTML = html;
+        return data.results;
     } catch (error) {
         console.log(error);
     }
 }
 
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    searchMovies(search.value);
+search.addEventListener('keyup', async (event) => {
+    const movies = await searchMovies(event.target.value);
+    if (movies) {
+        movies.length > 0 
+        ? listMovies.innerHTML = movies.map(movie => templateCardMovie(movie)).join('') 
+        : listMovies.innerHTML = `<p class="text-center fs-4">Film "<span class="fw-bold">${event.target.value}</span>" Tidak Ditemukan</p>`;
+    } else {
+        getMovies();
+    }
 });
 
 
